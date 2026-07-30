@@ -634,15 +634,6 @@
   }
 }
 
-.service-expertise,
-.service-approach,
-.service-industries,
-.faq-section,
-.cta-section {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 @media (max-width: 1024px) {
   .service-industries {
     padding-right: 50px;

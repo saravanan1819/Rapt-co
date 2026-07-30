@@ -1042,19 +1042,6 @@ body { margin: 0; }
   to { transform: translate3d(471%, 0, 0) rotate(-20deg); }
 }
 
-.experience,
-.advisory-philosophy,
-.why-rapt,
-.our-expertise,
-.client-testimonials,
-.insights-resources,
-.leadership-team,
-.faq-section,
-.cta-section {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 @media (max-width: 768px) {
   .cta-section { width: calc(100% - 60px); height: auto; min-height: 448px; padding: 60px 40px; }
 }

@@ -443,12 +443,6 @@
   transform: translate3d(0, -28px, 0) scale(0.7222);
 }
 
-.get-in-touch,
-.faq-section {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 .consultation-form select option {
   color: #111;
 }

@@ -386,16 +386,6 @@
   will-change: transform;
 }
 
-.who-we-are,
-.our-journey,
-.our-purpose,
-.insights-resources,
-.leadership-team,
-.cta-section {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 .journey-timeline__stages {
   position: relative;
   z-index: 1;
