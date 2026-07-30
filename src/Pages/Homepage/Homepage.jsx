@@ -1,4 +1,4 @@
-import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Component, memo, Suspense, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -151,7 +151,7 @@ const faqs = [
   { question: "Do you handle tax and regulatory representation?", answer: "Yes. Our team assists clients with income tax representation, GST litigation, appeals, regulatory advisory, and compliance support before relevant authorities." },
 ];
 
-function TestimonialCard({ testimonial }) {
+const TestimonialCard = memo(function TestimonialCard({ testimonial }) {
   return (
     <article className="testimonial-card">
       <header className="testimonial-card__profile">
@@ -162,12 +162,14 @@ function TestimonialCard({ testimonial }) {
           src={quoteImage}
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
         />
       </header>
       <p className="testimonial-card__text">{testimonial.testimonial}</p>
     </article>
   );
-}
+});
 
 export function InsightsResources() {
   const [activeArticle, setActiveArticle] = useState(0);
@@ -204,7 +206,7 @@ export function InsightsResources() {
               <div className="featured-article-card__track" ref={articleTrackRef}>
                 {featuredArticles.map((item, index) => (
                   <div className={`featured-article-card__slide ${index === activeArticle ? "is-active" : ""}`} aria-hidden={index !== activeArticle} key={item.title}>
-                    <img src={item.backgroundImage} alt="" aria-hidden="true" />
+                    <img src={item.backgroundImage} alt="" aria-hidden="true" loading="lazy" decoding="async" />
                     <div className="featured-article-card__content">
                       <div className="featured-article-card__copy">
                         <h3>{item.title}</h3>
@@ -245,7 +247,7 @@ export function LeadershipTeam() {
           <div className="leadership-team__selector" role="list" aria-label="Leadership team members">
             {leadershipTeam.map((leader, index) => (
               <button type="button" className={index === activeLeader ? "is-active" : ""} onClick={() => setActiveLeader(index)} aria-pressed={index === activeLeader} role="listitem" key={leader.name}>
-                <img src={leader.image} alt={`${leader.name}, ${leader.designation}`} />
+                <img src={leader.image} alt={`${leader.name}, ${leader.designation}`} loading="lazy" decoding="async" />
                 <span className="leadership-team__selector-name">{leader.name}</span>
                 <span className="leadership-team__selector-role">{leader.designation}</span>
               </button>
@@ -259,7 +261,7 @@ export function LeadershipTeam() {
               {leadershipTeam.map((leader, index) => (
                 <div className={`leadership-profile__slide ${index === activeLeader ? "is-active" : ""}`} aria-hidden={index !== activeLeader} key={leader.name}>
                   <header className="leadership-profile__header">
-                    <img src={leader.image} alt={`${leader.name} profile`} />
+                    <img src={leader.image} alt={`${leader.name} profile`} loading="lazy" decoding="async" />
                     <div><h3>{leader.name}</h3><p>{leader.designation}</p></div>
                   </header>
                   <p className="leadership-profile__description">{leader.description}</p>
@@ -310,26 +312,27 @@ export function FrequentlyAskedQuestions() {
   );
 }
 
-export function CallToAction() {
+export const CallToAction = memo(function CallToAction() {
   return (
     <section className="cta-section" aria-labelledby="cta-heading">
-      <img className="cta-section__background" src={ctaBackground} alt="" aria-hidden="true" />
+      <img className="cta-section__background" src={ctaBackground} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div className="cta-section__content">
         <span className="cta-section__label">READY TO MOVE FORWARD?</span>
         <h2 id="cta-heading">Let's Build Confidence Together.</h2>
         <p>Whether you're strengthening governance, preparing for audits, navigating taxation, or building a future-ready compliance program, our experts are ready to support your next step.</p>
         <div className="cta-section__button-glow">
-          <a href="#consultation">Book a Consultation</a>
+          <a href="/contact#get-in-touch">Book a Consultation</a>
         </div>
       </div>
     </section>
   );
-}
+});
 
 function HorizontalCarousel({ items }) {
   const sliderRef = useRef(null);
+  const cardStepRef = useRef(415);
   const [activeIndex, setActiveIndex] = useState(0);
-  const cardStep = 415;
+  const [isCarouselActive, setIsCarouselActive] = useState(false);
   const [scrollEdges, setScrollEdges] = useState({
     atStart: true,
     atEnd: false,
@@ -338,7 +341,11 @@ function HorizontalCarousel({ items }) {
   const goTo = useCallback((nextIndex) => {
     const boundedIndex = Math.max(0, Math.min(items.length - 1, nextIndex));
     const slider = sliderRef.current;
-    slider?.scrollTo({ left: boundedIndex * cardStep, behavior: "smooth" });
+    setIsCarouselActive(boundedIndex > 0);
+    slider?.scrollTo({
+      left: boundedIndex * cardStepRef.current,
+      behavior: "smooth",
+    });
     setActiveIndex(boundedIndex);
   }, [items.length]);
 
@@ -346,29 +353,49 @@ function HorizontalCarousel({ items }) {
     const slider = sliderRef.current;
     if (!slider) return undefined;
     let frame;
+    const measureCards = () => {
+      const firstCard = slider.firstElementChild;
+      const gap = parseFloat(getComputedStyle(slider).columnGap) || 0;
+      cardStepRef.current = firstCard
+        ? firstCard.getBoundingClientRect().width + gap
+        : 415;
+    };
     const syncIndex = () => {
-      cancelAnimationFrame(frame);
+      if (frame) return;
       frame = requestAnimationFrame(() => {
-        setActiveIndex(
-          Math.min(
-            items.length - 1,
-            Math.max(0, Math.round(slider.scrollLeft / cardStep)),
-          ),
+        frame = 0;
+        const nextIndex = Math.min(
+          items.length - 1,
+          Math.max(0, Math.round(slider.scrollLeft / cardStepRef.current)),
         );
-        setScrollEdges({
+        const nextEdges = {
           atStart: slider.scrollLeft <= 2,
-          atEnd:
-            slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 2,
+          atEnd: slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 2,
+        };
+        setActiveIndex((current) => current === nextIndex ? current : nextIndex);
+        setScrollEdges((current) => (
+          current.atStart === nextEdges.atStart && current.atEnd === nextEdges.atEnd
+            ? current
+            : nextEdges
+        ));
+        setIsCarouselActive((current) => {
+          const nextActive = slider.scrollLeft > 2;
+          return current === nextActive ? current : nextActive;
         });
       });
     };
+    const handleResize = () => {
+      measureCards();
+      syncIndex();
+    };
+    measureCards();
     syncIndex();
     slider.addEventListener("scroll", syncIndex, { passive: true });
-    window.addEventListener("resize", syncIndex);
+    window.addEventListener("resize", handleResize, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       slider.removeEventListener("scroll", syncIndex);
-      window.removeEventListener("resize", syncIndex);
+      window.removeEventListener("resize", handleResize);
     };
   }, [items.length]);
 
@@ -384,7 +411,9 @@ function HorizontalCarousel({ items }) {
   };
 
   return (
-    <div className="expertise-carousel">
+    <div
+      className={`expertise-carousel${isCarouselActive ? " is-active" : ""}${scrollEdges.atEnd ? " is-at-end" : ""}`}
+    >
       {!scrollEdges.atStart && (
         <button
           className="expertise-carousel__control expertise-carousel__control--previous"
@@ -415,13 +444,15 @@ function HorizontalCarousel({ items }) {
                 src={expertiseImages[service.icon]}
                 alt=""
                 aria-hidden="true"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <a
               href={`#${service.icon}`}
               aria-label={`Learn more about ${service.title}`}
             >
-              <img src={expertiseArrow} alt="" aria-hidden="true" />
+              <img src={expertiseArrow} alt="" aria-hidden="true" loading="lazy" decoding="async" />
             </a>
           </article>
         ))}
@@ -448,10 +479,6 @@ class EarthTextureBoundary extends Component {
 
   static getDerivedStateFromError() {
     return { failed: true };
-  }
-
-  componentDidCatch(error) {
-    console.error("Earth textures could not be loaded. Rendering fallback material.", error);
   }
 
   render() {
@@ -683,6 +710,28 @@ function GlobeArtwork() {
 
 export default function Homepage() {
   const heroRef = useRef(null);
+  const globeHostRef = useRef(null);
+  const [shouldRenderGlobe, setShouldRenderGlobe] = useState(false);
+
+  useEffect(() => {
+    const host = globeHostRef.current;
+    if (!host || shouldRenderGlobe) return undefined;
+    if (!("IntersectionObserver" in window)) {
+      setShouldRenderGlobe(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldRenderGlobe(true);
+        observer.disconnect();
+      },
+      { rootMargin: "400px 0px" },
+    );
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [shouldRenderGlobe]);
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
@@ -701,11 +750,16 @@ export default function Homepage() {
 
     pills.forEach((pill) => {
       let frameId = 0;
+      let clientX = 0;
+      let clientY = 0;
       let pointerX = 50;
       let pointerY = 50;
 
       const renderReflection = () => {
         frameId = 0;
+        const bounds = pill.getBoundingClientRect();
+        pointerX = ((clientX - bounds.left) / bounds.width) * 100;
+        pointerY = ((clientY - bounds.top) / bounds.height) * 100;
         pill.style.setProperty("--mouse-x", `${pointerX}%`);
         pill.style.setProperty("--mouse-y", `${pointerY}%`);
         pill.style.setProperty("--reflection-x", `${(pointerX - 50) * 0.08}px`);
@@ -713,16 +767,18 @@ export default function Homepage() {
       };
 
       const handlePointerMove = (event) => {
-        const bounds = pill.getBoundingClientRect();
-        pointerX = ((event.clientX - bounds.left) / bounds.width) * 100;
-        pointerY = ((event.clientY - bounds.top) / bounds.height) * 100;
+        clientX = event.clientX;
+        clientY = event.clientY;
         if (!frameId) frameId = window.requestAnimationFrame(renderReflection);
       };
 
       const handlePointerLeave = () => {
-        pointerX = 50;
-        pointerY = 50;
-        if (!frameId) frameId = window.requestAnimationFrame(renderReflection);
+        if (frameId) window.cancelAnimationFrame(frameId);
+        frameId = 0;
+        pill.style.setProperty("--mouse-x", "50%");
+        pill.style.setProperty("--mouse-y", "50%");
+        pill.style.setProperty("--reflection-x", "0px");
+        pill.style.setProperty("--reflection-y", "0px");
       };
 
       pill.addEventListener("pointermove", handlePointerMove, { passive: true });
@@ -741,7 +797,7 @@ export default function Homepage() {
     <>
     <main>
       <section className="homepage-hero" aria-labelledby="homepage-hero-title" ref={heroRef}>
-        <img className="homepage-hero__background" src={heroBackground} alt="" aria-hidden="true" />
+        <img className="homepage-hero__background" src={heroBackground} alt="" aria-hidden="true" fetchPriority="high" />
         <Header />
 
         <div className="homepage-hero__content">
@@ -752,7 +808,7 @@ export default function Homepage() {
           </h1>
           <p className="homepage-hero__description">From DPDPA Compliance and SOC Audits to Taxation, GST Appeals, Privacy, and GRC, RAPT &amp; Co. delivers integrated advisory solutions tailored for modern enterprises.</p>
           <div className="homepage-hero__buttons">
-            <NavLink className="homepage-hero__primary" to="/#cta-heading">Book a Consultation</NavLink>
+            <NavLink className="homepage-hero__primary" to="/contact#get-in-touch">Book a Consultation</NavLink>
             <a className="homepage-hero__secondary" href="/company-profile.pdf" download>Download Company Profile</a>
           </div>
         </div>
@@ -765,7 +821,9 @@ export default function Homepage() {
           <div className="experience__wrapper">
             <div className="experience__left">
               <h1 id="experience-heading" className="experience__heading">Built on Experience.<br />Trusted by Expertise.</h1>
-              <figure className="experience__visual"><GlobeArtwork /></figure>
+              <figure className="experience__visual" ref={globeHostRef}>
+                {shouldRenderGlobe ? <GlobeArtwork /> : null}
+              </figure>
             </div>
 
             <div className="experience__right">
@@ -785,6 +843,8 @@ export default function Homepage() {
                       src={featureImages[feature.icon]}
                       alt={feature.title}
                       className={`experience-card__image experience-card__image--${feature.icon}`}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </article>
                 ))}
@@ -887,7 +947,7 @@ export default function Homepage() {
       </section>
 
       <section className="client-testimonials" aria-labelledby="testimonials-heading">
-        <img className="client-testimonials__background" src={clientBackground} alt="" aria-hidden="true" />
+        <img className="client-testimonials__background" src={clientBackground} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         <div className="client-testimonials__container">
           <header className="client-testimonials__header">
             <span className="client-testimonials__label">CLIENT TESTIMONIALS</span>

@@ -55,7 +55,42 @@ export default function Aboutpage() {
   const journeyActiveLineRef = useRef(null);
   const journeyTimelineRef = useRef(null);
   const journeyHasChangedRef = useRef(false);
+  const journeyTransitionRef = useRef(null);
   const purposeRef = useRef(null);
+
+  useLayoutEffect(() => {
+    let frame = 0;
+    const updateProgressScale = () => {
+      frame = 0;
+      const timeline = journeyTimelineRef.current;
+      const activeLine = journeyActiveLineRef.current;
+      const selectedDot = timeline?.querySelector(
+        `[data-stage-index="${activeJourneyStage}"] .journey-timeline__dot`,
+      );
+      const timelineBounds = timeline?.getBoundingClientRect();
+      const dotBounds = selectedDot?.getBoundingClientRect();
+      if (!timeline || !activeLine || !timelineBounds || !dotBounds) return;
+      const progress =
+        dotBounds.left -
+        timelineBounds.left +
+        timeline.scrollLeft +
+        dotBounds.width / 2;
+      gsap.set(activeLine, {
+        scaleX: progress / timelineBounds.width,
+        transformOrigin: "left center",
+      });
+    };
+    const handleResize = () => {
+      if (!frame) frame = requestAnimationFrame(updateProgressScale);
+    };
+
+    updateProgressScale();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [activeJourneyStage]);
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
@@ -110,12 +145,25 @@ export default function Aboutpage() {
   useLayoutEffect(() => {
     if (!journeyHasChangedRef.current) return;
 
-    gsap.fromTo(
+    const tween = gsap.fromTo(
       journeyContentRef.current,
       { autoAlpha: 0, y: 30 },
       { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" },
     );
+
+    return () => tween.kill();
   }, [activeJourneyStage]);
+
+  useLayoutEffect(
+    () => () => {
+      journeyTransitionRef.current?.kill();
+      gsap.killTweensOf([
+        journeyContentRef.current,
+        journeyActiveLineRef.current,
+      ]);
+    },
+    [],
+  );
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
@@ -158,12 +206,13 @@ export default function Aboutpage() {
     );
     const timelineBounds = timeline?.getBoundingClientRect();
     const dotBounds = selectedDot?.getBoundingClientRect();
-    const progressWidth =
+    const progressScale =
       timeline && timelineBounds && dotBounds
-        ? dotBounds.left -
-          timelineBounds.left +
-          timeline.scrollLeft +
-          dotBounds.width / 2
+        ? (dotBounds.left -
+            timelineBounds.left +
+            timeline.scrollLeft +
+            dotBounds.width / 2) /
+          timelineBounds.width
         : 0;
 
     gsap.killTweensOf([
@@ -171,8 +220,7 @@ export default function Aboutpage() {
       journeyActiveLineRef.current,
     ]);
 
-    gsap
-      .timeline({
+    journeyTransitionRef.current = gsap.timeline({
         onComplete: () => {
           journeyHasChangedRef.current = true;
           setActiveJourneyStage(stageIndex);
@@ -186,7 +234,7 @@ export default function Aboutpage() {
       .to(
         journeyActiveLineRef.current,
         {
-          width: progressWidth,
+          scaleX: progressScale,
           duration: 0.8,
           ease: "power3.inOut",
         },
@@ -210,6 +258,7 @@ export default function Aboutpage() {
             src={aboutBackground}
             alt=""
             aria-hidden="true"
+            fetchPriority="high"
           />
 
           <div className="about-hero__container">
@@ -341,6 +390,8 @@ export default function Aboutpage() {
             src={purposeBackground}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
           />
 
           <div className="our-purpose__wrapper">

@@ -70,8 +70,8 @@
   text-decoration: none;
   transition:
     transform 250ms ease,
-    box-shadow 250ms ease,
     background 250ms ease;
+  will-change: transform;
 }
 
 .contact-hero__primary {
@@ -339,7 +339,6 @@
   flex: 0 1 700px;
   flex-direction: column;
   width: min(700px, 58%);
-  /* height: 775px; */
   overflow: hidden;
   border: 1px solid #686868;
   background: transparent;
@@ -408,8 +407,10 @@
   font-weight: 400;
   line-height: 1;
   pointer-events: none;
+  transform: translate3d(0, 0, 0) scale(1);
   transform-origin: left top;
-  transition: all 0.28s ease;
+  transition: transform 0.28s ease, color 0.28s ease;
+  will-change: transform;
 }
 
 .consultation-form input,
@@ -438,10 +439,14 @@
 .consultation-form textarea:not(:placeholder-shown) + label,
 .consultation-form select:focus + label,
 .consultation-form select:valid + label {
-  top: -8px;
   color: #cb6724;
-  font-size: 13px;
-  transform: translateY(0);
+  transform: translate3d(0, -28px, 0) scale(0.7222);
+}
+
+.get-in-touch,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 .consultation-form select option {

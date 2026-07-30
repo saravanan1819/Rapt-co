@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Footer.css";
@@ -15,7 +16,13 @@ const expertiseLinks = [
   "Governance, Risk & Compliance (GRC)",
 ];
 
-const quickLinks = ["Home", "About", "Expertise", "Insights & Resources", "Contact"];
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Expertise", to: "/expertise" },
+  { label: "Insights & Resources", to: "/insights" },
+  { label: "Contact", to: "/contact" },
+];
 
 const socialLinks = [
   { label: "X / Twitter", href: "#twitter", Icon: FaXTwitter },
@@ -140,7 +147,9 @@ export default function Footer() {
 
         <nav className="site-footer__links" aria-labelledby="footer-quick-links-heading">
           <h3 id="footer-quick-links-heading">Quick Links</h3>
-          {quickLinks.map((link) => <a href={link === "About" ? "/about" : `#${link.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`} key={link}>{link}</a>)}
+          {quickLinks.map(({ label, to }) => (
+            <Link to={to} key={to}>{label}</Link>
+          ))}
         </nav>
       </div>
 

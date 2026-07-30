@@ -378,10 +378,22 @@
 }
 
 .journey-timeline__active {
-  width: 135px;
+  width: 100%;
   height: 100%;
   background: #e9772b;
-  will-change: width;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.who-we-are,
+.our-journey,
+.our-purpose,
+.insights-resources,
+.leadership-team,
+.cta-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 .journey-timeline__stages {

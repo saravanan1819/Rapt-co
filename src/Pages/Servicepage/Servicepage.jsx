@@ -7,10 +7,7 @@ import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
 import heroBackground from "../../assets/Background.gif";
 import "./Servicepage.css";
-import {
-  CallToAction,
-
-} from "../Homepage/Homepage";
+import { CallToAction } from "../Homepage/Homepage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -256,6 +253,7 @@ export default function Servicepage() {
             src={heroBackground}
             alt=""
             aria-hidden="true"
+            fetchPriority="high"
           />
           <Header />
 
@@ -366,7 +364,7 @@ export default function Servicepage() {
                         </p>
 
                         <div className="service-accordion__bottom-row">
-                          <NavLink to="/#cta-heading">
+                          <NavLink to="/contact#get-in-touch">
                             Book a Consultation
                             <FaArrowRight
                               className="service-accordion__link-icon"
@@ -378,6 +376,8 @@ export default function Servicepage() {
                             <img
                               src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=450&q=80"
                               alt="Advisory team in a business meeting"
+                              loading="lazy"
+                              decoding="async"
                             />
                           </figure>
                         </div>
@@ -465,7 +465,7 @@ export default function Servicepage() {
                       key={`${duplicateIndex}-${industry.number}`}
                     >
                       <div className="industry-card__image">
-                        <img src={industry.image} alt="" />
+                        <img src={industry.image} alt="" loading="lazy" decoding="async" />
                       </div>
                       <div className="industry-card__text">
                         <span>{industry.number}</span>

@@ -1,20 +1,18 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { RiArrowLeftLongLine } from "react-icons/ri";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
-import {
-  CallToAction,
-  FrequentlyAskedQuestions,
-} from "../Homepage/Homepage";
+import { FrequentlyAskedQuestions } from "../Homepage/Homepage";
 import heroBackground from "../../assets/Background.gif";
 import "./Contactpage.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contactpage() {
+  const location = useLocation();
   const heroRef = useRef(null);
   const getInTouchRef = useRef(null);
   const [formData, setFormData] = useState({
@@ -25,6 +23,19 @@ export default function Contactpage() {
     service: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (location.hash !== "#get-in-touch") return undefined;
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById("get-in-touch")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [location.hash]);
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
@@ -101,6 +112,7 @@ export default function Contactpage() {
             src={heroBackground}
             alt=""
             aria-hidden="true"
+            fetchPriority="high"
           />
           <Header />
 
@@ -115,7 +127,7 @@ export default function Contactpage() {
               with the right experts.
             </p>
             <div className="contact-hero__buttons">
-              <NavLink className="contact-hero__primary" to="/#cta-heading">
+              <NavLink className="contact-hero__primary" to="/contact#get-in-touch">
                 Book a Consultation
               </NavLink>
               <a
@@ -134,6 +146,7 @@ export default function Contactpage() {
         </section>
 
         <section
+          id="get-in-touch"
           className="get-in-touch"
           aria-labelledby="get-in-touch-title"
           ref={getInTouchRef}
@@ -303,7 +316,6 @@ export default function Contactpage() {
         </section>
 
         <FrequentlyAskedQuestions />
-        {/* <CallToAction /> */}
       </main>
       <Footer />
     </>

@@ -57,7 +57,7 @@ export default function Header() {
             </span>
             <NavLink
               className="site-header__demo"
-              to="/#cta-heading"
+              to="/contact#get-in-touch"
               onClick={closeMenu}
             >
               Book demo
