@@ -5,7 +5,7 @@ import "./Header.css";
 
 const navigation = [
   { label: "Expertise", to: "/expertise" },
-  { label: "Insights", to: "/#insights-heading" },
+  { label: "Insights", to: "/insights" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
