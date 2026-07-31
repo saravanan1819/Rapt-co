@@ -296,7 +296,7 @@ export default function Insightspage() {
           className="trending-insights insights-page__section insights-page__reveal"
           aria-labelledby="trending-insights-title"
         >
-          <img
+          {/* <img
             className="insights-section-illustration insights-section-illustration--trending"
             src={trendingInsightsImage}
             alt=""
@@ -305,7 +305,7 @@ export default function Insightspage() {
             decoding="async"
             width="1200"
             height="900"
-          />
+          /> */}
           <div className="insights-page__container">
             <header className="insights-section-heading insights-page__stagger">
               <span className="insights-label">TRENDING</span>
@@ -331,7 +331,7 @@ export default function Insightspage() {
           className="insights-cases insights-page__section insights-page__reveal"
           aria-labelledby="case-studies-title"
         >
-          <img
+          {/* <img
             className="insights-section-illustration insights-section-illustration--cases"
             src={caseStudyImage}
             alt=""
@@ -340,7 +340,7 @@ export default function Insightspage() {
             decoding="async"
             width="1200"
             height="900"
-          />
+          /> */}
           <div className="insights-page__container">
             <header className="insights-section-heading insights-page__stagger">
               <span className="insights-label">CASE STUDIES</span>
@@ -367,7 +367,7 @@ export default function Insightspage() {
           className="insights-resources-page insights-page__section insights-page__reveal"
           aria-labelledby="resources-title"
         >
-          <img
+          {/* <img
             className="insights-section-illustration insights-section-illustration--resources"
             src={resourcesImage}
             alt=""
@@ -376,7 +376,7 @@ export default function Insightspage() {
             decoding="async"
             width="1200"
             height="900"
-          />
+          /> */}
           <div className="insights-page__container">
             <header className="insights-section-heading insights-page__stagger">
               <span className="insights-label">RESOURCES</span>
@@ -400,7 +400,7 @@ export default function Insightspage() {
         <section className="insights-newsletter insights-page__section insights-page__reveal">
           <div className="insights-page__container">
             <div className="insights-newsletter__card insights-page__stagger">
-              <img
+              {/* <img
                 className="insights-card-illustration insights-card-illustration--newsletter"
                 src={newsletterImage}
                 alt=""
@@ -409,7 +409,7 @@ export default function Insightspage() {
                 decoding="async"
                 width="1200"
                 height="900"
-              />
+              /> */}
               <span className="insights-label">NEWSLETTER</span>
               <h2>Stay Ahead with RAPT &amp; Co.</h2>
               <p>
