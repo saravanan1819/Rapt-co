@@ -312,14 +312,17 @@ export function FrequentlyAskedQuestions() {
   );
 }
 
-export const CallToAction = memo(function CallToAction() {
+export const CallToAction = memo(function CallToAction({
+  heading = "Let's Build Confidence Together.",
+  description = "Whether you're strengthening governance, preparing for audits, navigating taxation, or building a future-ready compliance program, our experts are ready to support your next step.",
+}) {
   return (
     <section className="cta-section" aria-labelledby="cta-heading">
       <img className="cta-section__background" src={ctaBackground} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div className="cta-section__content">
         <span className="cta-section__label">READY TO MOVE FORWARD?</span>
-        <h2 id="cta-heading">Let's Build Confidence Together.</h2>
-        <p>Whether you're strengthening governance, preparing for audits, navigating taxation, or building a future-ready compliance program, our experts are ready to support your next step.</p>
+        <h2 id="cta-heading">{heading}</h2>
+        <p>{description}</p>
         <div className="cta-section__button-glow">
           <a href="/contact#get-in-touch">Book a Consultation</a>
         </div>

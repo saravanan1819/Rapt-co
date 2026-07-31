@@ -14,6 +14,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
 import RelatedInsights from "../../Components/RelatedInsights";
+import { CallToAction } from "../Homepage/Homepage";
 import { getInsightBySlug, insights } from "../../Data/insights";
 import "./Insightspage.css";
 import "./InsightDetail.css";
@@ -367,19 +368,10 @@ export default function InsightDetail() {
 
         <RelatedInsights article={article} />
 
-        <section className="insight-detail-cta insight-detail__reveal">
-          <div className="insight-detail__container">
-            <div className="insight-detail-cta__card insight-detail__stagger">
-              <span>READY TO MOVE FORWARD?</span>
-              <h2>Turn Insight Into Confident Action.</h2>
-              <p>
-                Our advisors are ready to help you translate complex priorities
-                into practical progress and sustainable value.
-              </p>
-              <Link to="/contact#get-in-touch">Book a Consultation</Link>
-            </div>
-          </div>
-        </section>
+        <CallToAction
+          heading="Turn Insight Into Confident Action."
+          description="Our advisors are ready to help you translate complex priorities into practical progress and sustainable value."
+        />
       </main>
       <Footer />
     </div>

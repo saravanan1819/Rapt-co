@@ -22,6 +22,7 @@ import newsletterImage from "../../assets/insights/newsletter.png";
 import resourcesImage from "../../assets/insights/resources.png";
 import trendingInsightsImage from "../../assets/insights/trending-insights.png";
 import "./Insightspage.css";
+import { CallToAction } from "../Homepage/Homepage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -432,7 +433,7 @@ export default function Insightspage() {
           </div>
         </section>
 
-        <section className="insights-final-cta insights-page__section insights-page__reveal">
+        {/* <section className="insights-final-cta insights-page__section insights-page__reveal">
           <div className="insights-page__container">
             <div className="insights-final-cta__card insights-page__stagger">
               <img
@@ -461,7 +462,9 @@ export default function Insightspage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
+        {/* <CallToAction /> */}
+
       </main>
       <Footer />
     </div>

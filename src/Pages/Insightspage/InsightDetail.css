@@ -367,6 +367,14 @@
   padding: var(--section-space) 0;
 }
 
+.insight-detail .insight-related {
+  padding-bottom: clamp(30px, 4vw, 60px);
+}
+
+.insight-detail .insight-related + .cta-section {
+  margin-top: clamp(30px, 4vw, 60px);
+}
+
 .insight-detail__section-heading {
   margin-bottom: 55px;
 }
