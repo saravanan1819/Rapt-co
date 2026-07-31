@@ -166,11 +166,7 @@ export default function Insightspage() {
 
           <div className="insights-hero__container">
             <div className="insights-hero__content">
-              <nav className="insights-hero__breadcrumb" aria-label="Breadcrumb">
-                <Link to="/">Home</Link>
-                <span aria-hidden="true">/</span>
-                <span>Insights</span>
-              </nav>
+            
               <h1 className="insights-hero__title" id="insights-page-title">
                 Insights &amp; Perspectives
               </h1>

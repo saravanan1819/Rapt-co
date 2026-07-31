@@ -1,7 +1,6 @@
 .insights-page {
   color: #111;
   background: #fff;
-  font-family: inherit;
 }
 
 .insights-page__container {
@@ -49,7 +48,7 @@
   height: 100%;
   align-items: center;
   margin-inline: auto;
-  padding: 150px 30px 30px;
+  padding: 350px 10px 10px;
 }
 
 .insights-hero__content {
@@ -544,29 +543,29 @@
 
 .trending-insights__viewport {
   width: 100%;
-  overflow-x: auto;
-  padding: 0 var(--layout-gutter) 20px;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
+  /* overflow-x: auto; */
+  padding: 0 85px 20px;
+  /* scrollbar-width: none; */
+  /* scroll-snap-type: x mandatory; */
 }
 
 .trending-insights__track {
   display: flex;
   width: max-content;
-  gap: 22px;
+  gap: 15px;
 }
 
 .trending-card {
   position: relative;
   display: flex;
-  width: min(390px, calc(100vw - 50px));
+  width: min(330px, calc(100vw - 50px));
   min-height: 300px;
   flex-direction: column;
   overflow: hidden;
   padding: 32px;
   border: 1px solid #e1e1e1;
   border-radius: 25px;
-  background: rgb(255 255 255 / 78%);
+  background: rgb(255 255 255 / 100%);
   color: #151515;
   text-decoration: none;
   scroll-snap-align: start;
