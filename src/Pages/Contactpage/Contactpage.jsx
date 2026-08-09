@@ -8,7 +8,7 @@ import Footer from "../../Component/Footer/Footer";
 import { FrequentlyAskedQuestions } from "../Homepage/Homepage";
 // import heroBackground from "../../assets/Background.gif";
 // import heroBackgroundVideo from "../../assets/animo.webm";
-import heroBackgroundVideo from "../../assets/animo2.webm";
+import heroBackgroundVideo from "../../assets/animo3.mp4";
 import "./Contactpage.css";
 
 gsap.registerPlugin(ScrollTrigger);

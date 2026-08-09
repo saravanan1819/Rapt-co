@@ -10,7 +10,7 @@ import {
 } from "../Homepage/Homepage";
 // import aboutBackground from "../../assets/Background.gif";
 // import aboutBackgroundVideo from "../../assets/animo.webm";
-import aboutBackgroundVideo from "../../assets/animo2.webm";
+import aboutBackgroundVideo from "../../assets/animo3.mp4";
 import purposeBackground from "../../assets/Client_bg.png";
 import "./Aboutpage.css";
 

@@ -16,7 +16,7 @@ import InsightCard from "../../Components/InsightCard";
 import { insights } from "../../Data/insights";
 // import heroBackground from "../../assets/Background.gif";
 // import heroBackgroundVideo from "../../assets/animo.webm";
-import heroBackgroundVideo from "../../assets/animo2.webm";
+import heroBackgroundVideo from "../../assets/animo3.mp4";
 import caseStudyImage from "../../assets/insights/case-study.png";
 import consultationCtaImage from "../../assets/insights/consultation-cta.png";
 import newsletterImage from "../../assets/insights/newsletter.png";

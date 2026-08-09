@@ -10,7 +10,7 @@ import articlesCardBackground from "../../assets/ArticlesCard.png";
 import ctaBackground from "../../assets/CTA_section_bg.png";
 // import heroBackground from "../../assets/Background.gif";
 // import heroBackgroundVideo from "../../assets/animo.webm";
-import heroBackgroundVideo from "../../assets/animo2.webm";
+import heroBackgroundVideo from "../../assets/animo3.mp4";
 import earthDay from "../../assets/earth/earth_day_2k.jpg";
 import earthNormal from "../../assets/earth/earth_normal_2k.jpg";
 import earthBump from "../../assets/earth/earth_bump_2k.jpg";

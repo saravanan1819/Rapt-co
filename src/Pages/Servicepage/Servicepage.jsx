@@ -7,7 +7,7 @@ import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
 // import heroBackground from "../../assets/Background.gif";
 // import heroBackgroundVideo from "../../assets/animo.webm";
-import heroBackgroundVideo from "../../assets/animo2.webm";
+import heroBackgroundVideo from "../../assets/animo3.mp4";
 import dpdpaComplianceImage from "../../assets/services/dpdpa-compliance.webp";
 import socAuditsImage from "../../assets/services/soc-audits.webp";
 import privacyAuditsImage from "../../assets/services/privacy-audits.webp";
