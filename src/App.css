@@ -51,9 +51,9 @@ button, a, input, select, textarea {
   inset: 0;
   z-index: 1;
   content: "";
-  background: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, transparent 100%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: linear-gradient(to top, rgb(0 0 0 / 75%) 0%, transparent 100%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
   pointer-events: none;
 }
 
@@ -82,7 +82,7 @@ button, a, input, select, textarea {
 .insights-hero .insights-hero__title,
 .insights-hero .insights-hero__description {
   color: #fff;
-  text-shadow: 0 2px 8px rgba(250, 249, 249, 0.5);
+  text-shadow: 0 2px 8px rgba(250, 249, 249, 0.2);
 
 }
 
