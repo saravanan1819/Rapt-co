@@ -9,7 +9,8 @@ import {
   LeadershipTeam,
 } from "../Homepage/Homepage";
 // import aboutBackground from "../../assets/Background.gif";
-import aboutBackgroundVideo from "../../assets/animo.webm";
+// import aboutBackgroundVideo from "../../assets/animo.webm";
+import aboutBackgroundVideo from "../../assets/animo2.webm";
 import purposeBackground from "../../assets/Client_bg.png";
 import "./Aboutpage.css";
 
