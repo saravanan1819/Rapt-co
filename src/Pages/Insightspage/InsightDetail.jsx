@@ -83,6 +83,15 @@ function ArticleContent({ block }) {
       </blockquote>
     );
   }
+  if (block.type === "source") {
+    return (
+      <p>
+        <a href={block.href} target="_blank" rel="noreferrer">
+          {block.label}
+        </a>
+      </p>
+    );
+  }
   return null;
 }
 
@@ -272,20 +281,21 @@ export default function InsightDetail() {
             </div>
           </header>
 
-          <div className="insight-detail-cover insight-detail__reveal">
-            <div className="insight-detail__container">
-              <img
-                className="insight-detail__stagger"
-                src={article.featuredImage}
-                alt={`Cover for ${article.title}`}
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                width="1200"
-                height="900"
-              />
+          {article.featuredImage ? (
+            <div className="insight-detail-cover insight-detail__reveal">
+              <div className="insight-detail__container">
+                <img
+                  className="insight-detail__stagger"
+                  src={article.featuredImage}
+                  alt={`Cover for ${article.title}`}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  width="1200"
+                />
+              </div>
             </div>
-          </div>
+          ) : null}
 
           <div className="insight-article insight-detail__reveal">
             <div className="insight-detail__container insight-article__layout">

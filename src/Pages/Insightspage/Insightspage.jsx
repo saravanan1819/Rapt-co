@@ -14,10 +14,10 @@ import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
 import InsightCard from "../../Components/InsightCard";
 import { insights } from "../../Data/insights";
-import heroBackground from "../../assets/Background.gif";
+// import heroBackground from "../../assets/Background.gif";
+import heroBackgroundVideo from "../../assets/animo.webm";
 import caseStudyImage from "../../assets/insights/case-study.png";
 import consultationCtaImage from "../../assets/insights/consultation-cta.png";
-import featuredInsightImage from "../../assets/insights/featured-insight.png";
 import newsletterImage from "../../assets/insights/newsletter.png";
 import resourcesImage from "../../assets/insights/resources.png";
 import trendingInsightsImage from "../../assets/insights/trending-insights.png";
@@ -156,12 +156,21 @@ export default function Insightspage() {
           aria-labelledby="insights-page-title"
           ref={heroRef}
         >
-          <img
+          {/* <img
             className="insights-hero__background"
             src={heroBackground}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
+          /> */}
+          <video
+            className="insights-hero__background"
+            src={heroBackgroundVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
           />
           <Header />
 
@@ -207,14 +216,16 @@ export default function Insightspage() {
 
             <article className="featured-insight__card insights-page__stagger">
               <div className="featured-insight__media">
-                <img
-                  src={featuredInsightImage}
-                  alt="Glass editorial discovery and connected research illustration"
-                  loading="lazy"
-                  decoding="async"
-                  width="1200"
-                  height="900"
-                />
+                  {featuredInsight.featuredImage ? (
+                    <img
+                      src={featuredInsight.featuredImage}
+                      alt={`Cover for ${featuredInsight.title}`}
+                      loading="lazy"
+                      decoding="async"
+                      width="1200"
+                      height="900"
+                    />
+                  ) : null}
                 <span>Featured</span>
               </div>
               <div className="featured-insight__content">
@@ -297,16 +308,6 @@ export default function Insightspage() {
           className="trending-insights insights-page__section insights-page__reveal"
           aria-labelledby="trending-insights-title"
         >
-          {/* <img
-            className="insights-section-illustration insights-section-illustration--trending"
-            src={trendingInsightsImage}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-            width="1200"
-            height="900"
-          /> */}
           <div className="insights-page__container">
             <header className="insights-section-heading insights-page__stagger">
               <span className="insights-label">TRENDING</span>
@@ -321,7 +322,7 @@ export default function Insightspage() {
                   variant="trending"
                   number={String(index + 1).padStart(2, "0")}
                   className="insights-page__stagger"
-                  key={insight.slug}
+              
                 />
               ))}
             </div>

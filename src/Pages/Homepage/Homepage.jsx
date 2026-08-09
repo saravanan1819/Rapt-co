@@ -8,7 +8,8 @@ import gsap from "gsap";
 import clientBackground from "../../assets/Client_bg.png";
 import articlesCardBackground from "../../assets/ArticlesCard.png";
 import ctaBackground from "../../assets/CTA_section_bg.png";
-import heroBackground from "../../assets/Background.gif";
+// import heroBackground from "../../assets/Background.gif";
+import heroBackgroundVideo from "../../assets/animo.webm";
 import earthDay from "../../assets/earth/earth_day_2k.jpg";
 import earthNormal from "../../assets/earth/earth_normal_2k.jpg";
 import earthBump from "../../assets/earth/earth_bump_2k.jpg";
@@ -800,7 +801,8 @@ export default function Homepage() {
     <>
     <main>
       <section className="homepage-hero" aria-labelledby="homepage-hero-title" ref={heroRef}>
-        <img className="homepage-hero__background" src={heroBackground} alt="" aria-hidden="true" fetchPriority="high" />
+        {/* <img className="homepage-hero__background" src={heroBackground} alt="" aria-hidden="true" fetchPriority="high" /> */}
+        <video className="homepage-hero__background" src={heroBackgroundVideo} autoPlay muted loop playsInline aria-hidden="true" />
         <Header />
 
         <div className="homepage-hero__content">

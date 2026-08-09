@@ -8,7 +8,8 @@ import {
   InsightsResources,
   LeadershipTeam,
 } from "../Homepage/Homepage";
-import aboutBackground from "../../assets/Background.gif";
+// import aboutBackground from "../../assets/Background.gif";
+import aboutBackgroundVideo from "../../assets/animo.webm";
 import purposeBackground from "../../assets/Client_bg.png";
 import "./Aboutpage.css";
 
@@ -253,12 +254,21 @@ export default function Aboutpage() {
           aria-labelledby="about-hero-title"
           ref={heroRef}
         >
-          <img
+          {/* <img
             className="about-hero__background"
             src={aboutBackground}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
+          /> */}
+          <video
+            className="about-hero__background"
+            src={aboutBackgroundVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
           />
 
           <div className="about-hero__container">

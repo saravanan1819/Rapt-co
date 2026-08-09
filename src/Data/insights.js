@@ -1,325 +1,377 @@
-import artificialIntelligenceImage from "../assets/insights/artificial-intelligence.png";
-import brandingStrategyImage from "../assets/insights/branding-strategy.png";
-import businessAutomationImage from "../assets/insights/business-automation.png";
-import cloudStrategyImage from "../assets/insights/cloud-strategy.png";
-import cybersecurityImage from "../assets/insights/cybersecurity.png";
-import digitalTransformationImage from "../assets/insights/digital-transformation.png";
-import uiUxDesignImage from "../assets/insights/ui-ux-design.png";
-import webDevelopmentImage from "../assets/insights/web-development.png";
-import governCardImage from "../assets/Govern.png";
-import growCardImage from "../assets/Grow.png";
-import protectCardImage from "../assets/Protect.png";
+import criticalInfrastructureImage from "../assets/insights/CriticalInfrastructure&Datasecurity.jpeg";
+import majorDataBreachImage from "../assets/insights/MajorDataBreach.jpeg";
+import rajeshSaiIyerImage from "../assets/insights/Rajeshs_Sai_Iyer.jpeg";
+import driCustomsImage from "../assets/insights/DRI_customs.jpeg";
+import howSchoolsImage from "../assets/insights/HowSchools.jpeg";
 
-const articleBlueprints = [
+export const insights = [
   {
     id: 1,
-    slug: "digital-transformation-2026",
-    title: "Turning Digital Transformation Into Lasting Business Value",
-    category: "Digital Transformation",
-    author: "RAPT & Co. Advisory Team",
-    publishDate: "July 28, 2026",
-    readingTime: "9 min read",
-    featuredImage: digitalTransformationImage,
-    cardBackground: protectCardImage,
+    slug: "critical-infrastructure-data-security",
+    title: "Critical Infrastructure & Data Security – A Timely Reminder",
+    category: "Data Governance / CyberSecurity",
+    author: "",
+    publishDate: "",
+    readingTime: "",
+    featuredImage: criticalInfrastructureImage,
+    cardBackground: null,
     excerpt:
-      "A practical framework for aligning technology, people, governance, and measurable outcomes to build a digital-first operating model.",
+      "Data security is only as strong as its weakest link—including third-party service providers.",
     relatedArticles: [
-      "responsible-ai-business-advantage",
-      "automation-with-purpose",
-      "cloud-strategy-with-confidence",
+      "kudankulam-major-data-breach",
+      "rbi-draft-guidance-data-governance",
+      "schools-children-data-privacy",
     ],
     seo: {
-      title: "Digital Transformation Strategy 2026 | RAPT & Co.",
+      title: "Critical Infrastructure & Data Security – A Timely Reminder",
       description:
-        "Learn how leaders align technology, governance, people, and measurable outcomes to create lasting value from digital transformation.",
+        "Data security is only as strong as its weakest link—including third-party service providers.",
     },
-    keyTakeaways: [
-      "Treat transformation as an operating-model decision, not a technology project.",
-      "Connect every initiative to a measurable customer or business outcome.",
-      "Build governance into delivery so speed and confidence grow together.",
+    tableOfContents: [
+      { id: "a-timely-reminder", label: "A Timely Reminder" },
+      { id: "the-governance-responsibility", label: "The Governance Responsibility" },
     ],
-    quote:
-      "The most valuable transformation is not the one with the most technology. It is the one that makes the organization meaningfully better at serving people.",
+    keyTakeaways: [
+      "Data security is only as strong as its weakest link—including third-party service providers.",
+      "Protecting data is no longer just an IT responsibility—it's a governance responsibility.",
+    ],
+    content: [
+      { type: "heading", id: "a-timely-reminder", text: "A Timely Reminder" },
+      {
+        type: "paragraph",
+        text: "Reports suggest that files relating to India's largest nuclear power plant, Kudankulam, were exposed in a data breach involving data associated with Reliance Infrastructure that was reportedly hosted at a Yotta Data Centre.",
+      },
+      {
+        type: "paragraph",
+        text: "Whether it is a bank, hospital, power plant, or any critical infrastructure, one lesson remains the same:",
+      },
+      {
+        type: "highlight",
+        title: "Data security",
+        text: "Data security is only as strong as its weakest link—including third-party service providers.",
+      },
+      {
+        type: "heading",
+        id: "the-governance-responsibility",
+        text: "The Governance Responsibility",
+      },
+      {
+        type: "paragraph",
+        text: "This incident reinforces the need for strong data governance, third-party risk management, access controls, continuous monitoring, and cyber resilience.",
+      },
+      {
+        type: "paragraph",
+        text: "Protecting data is no longer just an IT responsibility—it's a governance responsibility.",
+      },
+    ],
   },
   {
     id: 2,
-    slug: "responsible-ai-business-advantage",
-    title: "Responsible AI as a Sustainable Business Advantage",
-    category: "Artificial Intelligence",
-    author: "RAPT & Co. Technology Advisory",
-    publishDate: "July 21, 2026",
-    readingTime: "8 min read",
-    featuredImage: artificialIntelligenceImage,
-    cardBackground: governCardImage,
-    excerpt:
-      "How intentional governance, human oversight, and clear accountability turn emerging AI capabilities into trusted enterprise value.",
+    slug: "kudankulam-major-data-breach",
+    title: "Kudankulam Project Files Allegedly Exposed in Major Data Breach",
+    category: "Major Data Breach",
+    author: "",
+    publishDate: "",
+    readingTime: "",
+    featuredImage: majorDataBreachImage,
+    cardBackground: null,
+    excerpt: "Nearly 19,000 files allegedly leaked. Third-Party Risk is National Security Risk.",
     relatedArticles: [
-      "digital-transformation-2026",
-      "cybersecurity-business-resilience",
-      "automation-with-purpose",
+      "critical-infrastructure-data-security",
+      "rbi-draft-guidance-data-governance",
+      "schools-children-data-privacy",
     ],
     seo: {
-      title: "Responsible AI Strategy | RAPT & Co. Insights",
+      title: "Kudankulam Project Files Allegedly Exposed in Major Data Breach",
       description:
-        "Explore a practical approach to responsible AI governance, accountability, risk management, and sustainable enterprise adoption.",
+        "Nearly 19,000 files allegedly leaked. Third-Party Risk is National Security Risk.",
     },
-    keyTakeaways: [
-      "Start with a valuable decision or workflow rather than a model.",
-      "Define human ownership for outcomes, exceptions, and escalation.",
-      "Measure trust, quality, and risk alongside productivity.",
+    tableOfContents: [
+      { id: "major-data-breach-alert", label: "Major Data Breach Alert" },
     ],
-    quote:
-      "Responsible AI is not a constraint on innovation. It is the architecture that allows innovation to scale with confidence.",
+    keyTakeaways: ["Third-Party Risk is National Security Risk."],
+    content: [
+      { type: "heading", id: "major-data-breach-alert", text: "Major Data Breach Alert" },
+      {
+        type: "list",
+        items: [
+          "Kudankulam Project Files Allegedly Exposed in Major Data Breach",
+          "Reliance Infrastructure",
+          "Yotta Data Centre Report",
+          "Nearly 19,000 files allegedly leaked",
+          "Third-Party Risk is National Security Risk",
+        ],
+      },
+    ],
   },
   {
     id: 3,
-    slug: "high-performance-web-experiences",
-    title: "Performance Is Part of the Product Experience",
-    category: "Web Development",
-    author: "RAPT & Co. Digital Experience Team",
-    publishDate: "July 15, 2026",
-    readingTime: "7 min read",
-    featuredImage: webDevelopmentImage,
-    cardBackground: growCardImage,
+    slug: "cma-rajesh-sai-iyer-vice-chairman",
+    title: "CMA Rajesh Sai Iyer Elected Vice Chairman",
+    category: "Leadership",
+    author: "",
+    publishDate: "",
+    readingTime: "",
+    featuredImage: rajeshSaiIyerImage,
+    cardBackground: null,
     excerpt:
-      "Why speed, accessibility, resilience, and maintainability should be designed into modern web products from the first decision.",
-    relatedArticles: [
-      "clarity-foundation-great-ux",
-      "brand-systems-people-trust",
-      "cloud-strategy-with-confidence",
-    ],
+      "Proud to celebrate a remarkable milestone! Congratulations to CMA.Rajesh Sai Iyer on being elected as the Vice Chairman.",
+    relatedArticles: [],
     seo: {
-      title: "High-Performance Web Experiences | RAPT & Co.",
+      title: "CMA Rajesh Sai Iyer Elected Vice Chairman",
       description:
-        "Discover how performance engineering improves conversion, accessibility, trust, and the long-term quality of digital products.",
+        "Proud to celebrate a remarkable milestone! Congratulations to CMA.Rajesh Sai Iyer on being elected as the Vice Chairman.",
     },
-    keyTakeaways: [
-      "Set performance budgets before visual and technical complexity grows.",
-      "Prioritize real-user experience over laboratory scores alone.",
-      "Make accessibility and resilience part of the definition of done.",
+    tableOfContents: [
+      { id: "a-remarkable-milestone", label: "A Remarkable Milestone" },
     ],
-    quote:
-      "A fast website is not simply a technical achievement. It is a clear signal that the organization respects the visitor's time.",
+    keyTakeaways: [
+      "Congratulations to CMA.Rajesh Sai Iyer on being elected as the Vice Chairman, The Institute of Cost Accountants of India – Southern India Regional Council (2026–27).",
+    ],
+    content: [
+      { type: "heading", id: "a-remarkable-milestone", text: "A Remarkable Milestone" },
+      {
+        type: "paragraph",
+        text: "Proud to celebrate a remarkable milestone! Congratulations to CMA.Rajesh Sai Iyer on being elected as the Vice Chairman, The Institute of Cost Accountants of India – Southern India Regional Council (2026–27). Wishing him a successful tenure filled with visionary leadership, impactful initiatives, and continued service to the profession. At R A P T & Co, we are honoured to be associated with and inspired by his leadership. Congratulations once again! 🎉",
+      },
+    ],
   },
   {
     id: 4,
-    slug: "clarity-foundation-great-ux",
-    title: "Why Clarity Is the Foundation of Great UX",
-    category: "UI / UX",
-    author: "RAPT & Co. Experience Design Team",
-    publishDate: "July 8, 2026",
-    readingTime: "6 min read",
-    featuredImage: uiUxDesignImage,
-    cardBackground: governCardImage,
+    slug: "directorate-revenue-intelligence-dri",
+    title: "Directorate of Revenue Intelligence (DRI)",
+    category: "DRI / Customs",
+    author: "",
+    publishDate: "",
+    readingTime: "",
+    featuredImage: driCustomsImage,
+    cardBackground: null,
     excerpt:
-      "The principles that help digital products feel intuitive, purposeful, inclusive, and effortless across every interaction.",
-    relatedArticles: [
-      "high-performance-web-experiences",
-      "brand-systems-people-trust",
-      "digital-transformation-2026",
-    ],
+      "We provide specialized advisory and representation in matters before the Directorate of Revenue Intelligence (DRI).",
+    relatedArticles: [],
     seo: {
-      title: "Clarity and Modern UX Design | RAPT & Co.",
+      title: "Directorate of Revenue Intelligence (DRI)",
       description:
-        "Learn how hierarchy, language, feedback, accessibility, and focused decision-making create clearer digital experiences.",
+        "We provide specialized advisory and representation in matters before the Directorate of Revenue Intelligence (DRI).",
     },
-    keyTakeaways: [
-      "Reduce decision effort before adding more interface guidance.",
-      "Use hierarchy and language to make the next action unmistakable.",
-      "Test whether the experience remains clear across abilities and contexts.",
+    tableOfContents: [
+      { id: "directorate-of-revenue-intelligence", label: "Directorate of Revenue Intelligence" },
+      { id: "our-dri-services", label: "Our DRI Services" },
+      { id: "we-help-you", label: "We Help You" },
+      { id: "why-choose-rapt-co", label: "Why Choose R A P T & Co" },
     ],
-    quote:
-      "The best interface does not ask people to admire its complexity. It gives them the confidence to move forward.",
+    keyTakeaways: [
+      "Expertise. Compliance. Protection. Value Beyond Numbers.",
+      "Practical, business-oriented solutions.",
+      "Integrity. Independence. Commitment.",
+    ],
+    content: [
+      {
+        type: "heading",
+        id: "directorate-of-revenue-intelligence",
+        text: "Directorate of Revenue Intelligence",
+      },
+      { type: "paragraph", text: "RAPT & Co COST ACCOUNTANTS" },
+      { type: "highlight", title: "DRI", text: "EXPERTISE. COMPLIANCE. PROTECTION. VALUE BEYOND NUMBERS." },
+      {
+        type: "paragraph",
+        text: "We provide specialized advisory and representation in matters before the Directorate of Revenue Intelligence (DRI) to help businesses navigate complex customs regulations with confidence and stay compliant.",
+      },
+      { type: "heading", id: "our-dri-services", text: "Our DRI Services" },
+      {
+        type: "list",
+        items: [
+          "Advisory on DRI investigations, searches, summons and inquiries",
+          "Representation before DRI, Customs Authorities, Adjudicating Authorities and appellate forums",
+          "Review of import/export documentation, valuation, classification and duty implications",
+          "Assistance in drafting replies to Show Cause Notices (SCNs) and other regulatory communications",
+          "Advisory on customs compliance, risk mitigation and internal control strengthening",
+          "Representation in adjudication and litigation proceedings",
+          "Preventive compliance reviews and risk assessments",
+          "Support in duty drawback, exemptions and other customs incentives",
+        ],
+      },
+      { type: "heading", id: "we-help-you", text: "We Help You" },
+      {
+        type: "list",
+        items: [
+          "Respond to regulatory scrutiny with confidence",
+          "Ensure compliance with customs laws and procedures",
+          "Minimize financial exposure and mitigation risk",
+          "Focus on your business while we protect your interests",
+        ],
+      },
+      { type: "heading", id: "why-choose-rapt-co", text: "Why Choose R A P T & Co" },
+      {
+        type: "list",
+        items: [
+          "Domain expertise in customs and DRI matters",
+          "Practical, business-oriented solutions",
+          "Strong representation and litigation support",
+          "Risk mitigation and compliance focus",
+          "Integrity. Independence. Commitment.",
+        ],
+      },
+    ],
   },
   {
     id: 5,
-    slug: "brand-systems-people-trust",
-    title: "Building Brand Systems People Remember and Trust",
-    category: "Branding",
-    author: "RAPT & Co. Brand Strategy Team",
-    publishDate: "June 30, 2026",
-    readingTime: "7 min read",
-    featuredImage: brandingStrategyImage,
-    cardBackground: protectCardImage,
+    slug: "schools-children-data-privacy",
+    title: "How Schools Breach Children’s Data Privacy: A Snapshot",
+    category: "Children’s Data Privacy",
+    author: "",
+    publishDate: "",
+    readingTime: "",
+    featuredImage: howSchoolsImage,
+    cardBackground: null,
     excerpt:
-      "A strong brand system connects positioning, identity, behavior, and customer experience into one consistent promise.",
+      "Photos, videos posted without parental consent potentially violate DPDP Act, exposing kids to online abuse, risks.",
     relatedArticles: [
-      "clarity-foundation-great-ux",
-      "digital-transformation-2026",
-      "high-performance-web-experiences",
+      "rbi-draft-guidance-data-governance",
+      "critical-infrastructure-data-security",
+      "kudankulam-major-data-breach",
     ],
     seo: {
-      title: "Building a Trusted Brand System | RAPT & Co.",
+      title: "How Schools Breach Children’s Data Privacy: A Snapshot",
       description:
-        "Explore how positioning, visual identity, voice, and consistent customer experiences build memorable and trusted brands.",
+        "Photos, videos posted without parental consent potentially violate DPDP Act, exposing kids to online abuse, risks.",
     },
-    keyTakeaways: [
-      "Define the promise before designing the identity.",
-      "Translate strategy into repeatable principles teams can use.",
-      "Measure consistency through customer experience, not assets alone.",
+    tableOfContents: [
+      { id: "childrens-data-privacy", label: "Children’s Data Privacy" },
+      { id: "much-to-learn", label: "Much to Learn" },
+      { id: "what-they-do", label: "What They Do" },
+      { id: "cost-of-non-compliance", label: "Cost of Non-Compliance" },
+      { id: "your-rights", label: "Your Rights" },
     ],
-    quote:
-      "A brand becomes valuable when every interaction reinforces the same clear and credible promise.",
+    keyTakeaways: [
+      "For children, verifiable parental consent is mandatory.",
+      "The DPDP Act requires organisations to collect, use, store and share personal data responsibly.",
+    ],
+    content: [
+      { type: "heading", id: "childrens-data-privacy", text: "Children’s Data Privacy" },
+      {
+        type: "paragraph",
+        text: "Photos, videos posted without parental consent potentially violate DPDP Act, exposing kids to online abuse, risks.",
+      },
+      {
+        type: "paragraph",
+        text: "Children celebrating birthdays, holding trophies, at their desks or smiling at the camera become samples of school websites and social media feeds.",
+      },
+      {
+        type: "paragraph",
+        text: "Yet many of these photographs and videos are posted without verifiable parental consent, potentially violating the Digital Personal Data Protection (DPDP) Act, 2023, and exposing children to privacy breaches, online abuse and legal risks.",
+      },
+      {
+        type: "paragraph",
+        text: "The DPDP Act requires organisations to collect, use, store and share personal data responsibly.",
+      },
+      { type: "heading", id: "much-to-learn", text: "Much to Learn" },
+      {
+        type: "paragraph",
+        text: "The Digital Personal Data Protection Act, 2023 regulates how organisations collect, use and share personal data. For children, verifiable parental consent is mandatory.",
+      },
+      { type: "heading", id: "what-they-do", text: "What They Do" },
+      {
+        type: "list",
+        items: [
+          "Schools & coaching centres routinely post personal info.",
+          "They use students' photos, videos, names and achievements.",
+          "This is mostly for marketing, admissions and social media.",
+        ],
+      },
+      { type: "heading", id: "cost-of-non-compliance", text: "Cost of Non-Compliance" },
+      {
+        type: "paragraph",
+        text: "Violations can attract penalties running into hundreds of crores of fines.",
+      },
+      { type: "heading", id: "your-rights", text: "Your Rights" },
+      {
+        type: "list",
+        items: [
+          "Know what data is collected",
+          "Correct inaccurate data",
+          "Seek deletion where applicable",
+          "Withdraw consent",
+          "File a grievance",
+        ],
+      },
+    ],
   },
   {
     id: 6,
-    slug: "cybersecurity-business-resilience",
-    title: "Designing Cybersecurity for Business Resilience",
-    category: "Cybersecurity",
-    author: "RAPT & Co. Risk Advisory Team",
-    publishDate: "June 23, 2026",
-    readingTime: "9 min read",
-    featuredImage: cybersecurityImage,
-    cardBackground: growCardImage,
+    slug: "rbi-draft-guidance-data-governance",
+    title: "RBI’s Draft Guidance on Data Governance: A New Era for Regulated Entities",
+    category: "Data Governance",
+    author: "",
+    publishDate: "",
+    readingTime: "",
+    featuredImage: null,
+    cardBackground: null,
     excerpt:
-      "Move beyond reactive controls with a security strategy built around continuity, accountability, and confident growth.",
+      "The Reserve Bank of India has released its Draft Guidance on Regulatory Expectations for Data Governance, inviting stakeholder comments until 17 August 2026.",
     relatedArticles: [
-      "responsible-ai-business-advantage",
-      "cloud-strategy-with-confidence",
-      "automation-with-purpose",
+      "critical-infrastructure-data-security",
+      "schools-children-data-privacy",
+      "kudankulam-major-data-breach",
     ],
     seo: {
-      title: "Cybersecurity and Business Resilience | RAPT & Co.",
+      title: "RBI’s Draft Guidance on Data Governance: A New Era for Regulated Entities",
       description:
-        "Build a resilient cybersecurity strategy that connects risk ownership, continuity, controls, and confident business growth.",
+        "The Reserve Bank of India has released its Draft Guidance on Regulatory Expectations for Data Governance, inviting stakeholder comments until 17 August 2026.",
     },
+    tableOfContents: [
+      { id: "draft-guidance", label: "Draft Guidance" },
+      { id: "key-highlights", label: "Key Highlights" },
+      { id: "the-biggest-takeaway", label: "The Biggest Takeaway" },
+      { id: "readiness-assessment", label: "Readiness Assessment" },
+    ],
     keyTakeaways: [
-      "Prioritize risks based on business impact and critical services.",
-      "Design recovery and response before an incident occurs.",
-      "Make security ownership visible across leadership and delivery teams.",
+      "Data Governance is no longer just an IT initiative—it is a Boardroom agenda.",
+      "The organisations that start preparing today will be far better positioned when the final guidance comes into force.",
     ],
-    quote:
-      "Resilience is the confidence that the organization can protect what matters, respond deliberately, and continue moving forward.",
-  },
-  {
-    id: 7,
-    slug: "automation-with-purpose",
-    title: "Automating the Work That Slows Growth",
-    category: "Automation",
-    author: "RAPT & Co. Process Transformation Team",
-    publishDate: "June 16, 2026",
-    readingTime: "6 min read",
-    featuredImage: businessAutomationImage,
-    cardBackground: governCardImage,
-    excerpt:
-      "Identify high-value automation opportunities that remove friction while preserving control, ownership, and human judgment.",
-    relatedArticles: [
-      "digital-transformation-2026",
-      "responsible-ai-business-advantage",
-      "cloud-strategy-with-confidence",
+    content: [
+      { type: "heading", id: "draft-guidance", text: "Draft Guidance" },
+      {
+        type: "paragraph",
+        text: "The Reserve Bank of India has released its Draft Guidance on Regulatory Expectations for Data Governance, inviting stakeholder comments until 17 August 2026.",
+      },
+      {
+        type: "paragraph",
+        text: "This is much more than a compliance requirement—it marks a significant shift in the way banks, NBFCs, and other regulated entities are expected to govern data.",
+      },
+      { type: "heading", id: "key-highlights", text: "Some Key Highlights" },
+      {
+        type: "list",
+        items: [
+          "Data Governance Framework aligned with Enterprise Risk Management (ERM) and the Digital Personal Data Protection Act, 2023 (DPDPA) and DPDP Rules, 2025.",
+          "Direct Board oversight through a dedicated Board-level Data Governance Committee and an Executive Data Governance Committee.",
+          "Clearly defined accountability through roles such as Data Owner, Data Steward, Data Custodian, and Data Function.",
+          "Emphasis on Single Source of Truth (SSOT), data quality, metadata management, data lineage, data classification, and governance over third-party data sharing.",
+        ],
+      },
+      { type: "heading", id: "the-biggest-takeaway", text: "The Biggest Takeaway" },
+      {
+        type: "paragraph",
+        text: "Data Governance is no longer just an IT initiative—it is a Boardroom agenda. It has become an integral part of corporate governance, regulatory compliance, risk management, cybersecurity, and privacy.",
+      },
+      { type: "heading", id: "readiness-assessment", text: "Readiness Assessment" },
+      {
+        type: "paragraph",
+        text: "This is the ideal time for regulated entities to conduct a comprehensive Data Governance & DPDPA Readiness Assessment, covering governance structures, data architecture, AI governance, third-party risk management, and operational resilience.",
+      },
+      {
+        type: "paragraph",
+        text: "The organisations that start preparing today will be far better positioned when the final guidance comes into force.",
+      },
+      { type: "paragraph", text: "Is your organisation ready for this transformation?" },
+      {
+        type: "source",
+        label: "Refer: Reserve Bank of India",
+        href: "https://rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63155",
+      },
     ],
-    seo: {
-      title: "Purposeful Business Automation | RAPT & Co.",
-      description:
-        "Learn how to identify, prioritize, govern, and measure automation opportunities without adding operational complexity.",
-    },
-    keyTakeaways: [
-      "Improve the process before automating it.",
-      "Prioritize repetitive work with clear inputs and measurable outcomes.",
-      "Keep exception handling and accountability visible.",
-    ],
-    quote:
-      "The goal of automation is not to remove people from work. It is to give people more time for the work that requires judgment.",
-  },
-  {
-    id: 8,
-    slug: "cloud-strategy-with-confidence",
-    title: "A Smarter Path to Cloud Strategy and Modernization",
-    category: "Cloud Strategy",
-    author: "RAPT & Co. Technology Advisory",
-    publishDate: "June 9, 2026",
-    readingTime: "8 min read",
-    featuredImage: cloudStrategyImage,
-    cardBackground: growCardImage,
-    excerpt:
-      "A decision-led approach to cloud modernization that balances agility, economics, resilience, security, and governance.",
-    relatedArticles: [
-      "cybersecurity-business-resilience",
-      "high-performance-web-experiences",
-      "digital-transformation-2026",
-    ],
-    seo: {
-      title: "Cloud Strategy and Modernization | RAPT & Co.",
-      description:
-        "Build a cloud modernization roadmap that balances agility, cost, resilience, security, governance, and business value.",
-    },
-    keyTakeaways: [
-      "Choose cloud decisions based on workload and business value.",
-      "Make cost visibility and governance part of the architecture.",
-      "Modernize operating practices alongside the technology estate.",
-    ],
-    quote:
-      "Cloud creates value when it changes how confidently the organization can build, operate, learn, and adapt.",
   },
 ];
-
-function buildContent(article) {
-  const topic = article.category.toLowerCase();
-  return [
-    {
-      type: "paragraph",
-      text: `${article.excerpt} The organizations making the strongest progress approach ${topic} as a coordinated business capability rather than an isolated initiative.`,
-    },
-    {
-      type: "heading",
-      id: "why-it-matters",
-      text: `Why ${article.category} Matters Now`,
-    },
-    {
-      type: "paragraph",
-      text: `Customer expectations, regulatory pressure, operating complexity, and the pace of technology change are converging. Leaders need a practical way to make progress without trading speed for confidence.`,
-    },
-    {
-      type: "highlight",
-      title: "Leadership perspective",
-      text: `Start with the outcome the organization needs, make accountability explicit, and use technology as an enabler of a clearer operating decision.`,
-    },
-    {
-      type: "heading",
-      id: "practical-framework",
-      text: "A Practical Framework for Progress",
-    },
-    {
-      type: "list",
-      items: [
-        "Define the customer and business outcome in language every team understands.",
-        "Assess the current process, risks, capabilities, and decision rights.",
-        "Prioritize a focused portfolio of changes with accountable owners.",
-        "Measure adoption, quality, confidence, and value—not activity alone.",
-      ],
-    },
-    {
-      type: "image",
-      src: article.featuredImage,
-      alt: `Abstract visual representing ${article.category}`,
-      caption: "Strategy becomes valuable when it can be understood, owned, and applied.",
-    },
-    {
-      type: "heading",
-      id: "from-idea-to-impact",
-      text: "From Idea to Sustainable Impact",
-    },
-    {
-      type: "paragraph",
-      text: `Sustainable progress comes from short learning cycles supported by durable governance. Teams should be able to test, measure, and improve while leaders retain a clear view of risk, investment, and outcomes.`,
-    },
-    {
-      type: "quote",
-      text: article.quote,
-      attribution: article.author,
-    },
-  ];
-}
-
-export const insights = articleBlueprints.map((article) => ({
-  ...article,
-  tableOfContents: [
-    { id: "why-it-matters", label: `Why ${article.category} Matters Now` },
-    { id: "practical-framework", label: "A Practical Framework for Progress" },
-    { id: "from-idea-to-impact", label: "From Idea to Sustainable Impact" },
-  ],
-  content: buildContent(article),
-}));
 
 export function getInsightBySlug(slug) {
   return insights.find((article) => article.slug === slug);

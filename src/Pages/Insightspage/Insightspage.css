@@ -117,7 +117,10 @@
 
 .insights-button--dark {
   color: #fff;
-  background: #292929;
+  border: 0px solid #222;
+
+   background: #cb6724ee;
+
 }
 
 .insights-button--light {
@@ -181,7 +184,7 @@
 
 .featured-insight__card {
   display: grid;
-  min-height: 520px;
+  min-height: 550px;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   overflow: hidden;
   border: 1px solid rgb(160 160 160 / 22%);
@@ -201,6 +204,7 @@
 .featured-insight__media img {
   width: 100%;
   height: 100%;
+  padding:50px;
   object-fit: cover;
   transform: scale(1.02) translate3d(0, 0, 0);
 }

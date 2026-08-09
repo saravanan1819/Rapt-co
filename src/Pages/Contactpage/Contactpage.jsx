@@ -6,7 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
 import { FrequentlyAskedQuestions } from "../Homepage/Homepage";
-import heroBackground from "../../assets/Background.gif";
+// import heroBackground from "../../assets/Background.gif";
+import heroBackgroundVideo from "../../assets/animo.webm";
 import "./Contactpage.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -107,12 +108,21 @@ export default function Contactpage() {
           aria-labelledby="contact-hero-title"
           ref={heroRef}
         >
-          <img
+          {/* <img
             className="contact-hero__background"
             src={heroBackground}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
+          /> */}
+          <video
+            className="contact-hero__background"
+            src={heroBackgroundVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
           />
           <Header />
 

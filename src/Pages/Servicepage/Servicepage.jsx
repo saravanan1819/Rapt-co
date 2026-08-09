@@ -5,7 +5,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
 import Footer from "../../Component/Footer/Footer";
-import heroBackground from "../../assets/Background.gif";
+// import heroBackground from "../../assets/Background.gif";
+import heroBackgroundVideo from "../../assets/animo.webm";
+import dpdpaComplianceImage from "../../assets/services/dpdpa-compliance.webp";
+import socAuditsImage from "../../assets/services/soc-audits.webp";
+import privacyAuditsImage from "../../assets/services/privacy-audits.webp";
+import incomeTaxServicesImage from "../../assets/services/income-tax-services.webp";
+import gstServicesImage from "../../assets/services/gst-services.webp";
+import grcImage from "../../assets/services/governance-risk-compliance.webp";
+import telecommunicationImage from "../../assets/services/telecommunication.webp";
 import "./Servicepage.css";
 import { CallToAction } from "../Homepage/Homepage";
 
@@ -14,31 +22,43 @@ gsap.registerPlugin(ScrollTrigger);
 const services = [
   {
     title: "DPDPA Compliance",
+    image: dpdpaComplianceImage,
+    imageAlt: "Data privacy professional reviewing secure governance controls",
     description:
       "Navigate India's landmark data privacy legislation with end-to-end compliance solutions that strengthen governance, protect personal data, and build lasting digital trust.",
   },
   {
     title: "SOC Audits",
+    image: socAuditsImage,
+    imageAlt: "Auditor reviewing controls in a security operations center",
     description:
       "Build stakeholder confidence with structured SOC readiness and audit support that strengthens security, availability, confidentiality, and operational controls.",
   },
   {
     title: "Privacy Audits",
+    image: privacyAuditsImage,
+    imageAlt: "Privacy auditor reviewing protected data flows",
     description:
       "Evaluate privacy practices, identify compliance gaps, and establish practical controls that support accountable handling of personal data.",
   },
   {
     title: "Income Tax Services",
+    image: incomeTaxServicesImage,
+    imageAlt: "Tax advisor reviewing financial records and analytics",
     description:
       "Navigate income tax planning, assessments, representation, and disputes with experienced guidance designed to protect your interests.",
   },
   {
     title: "GST Services",
+    image: gstServicesImage,
+    imageAlt: "GST advisor reconciling business transactions",
     description:
       "Simplify GST compliance, audits, appeals, and advisory requirements through clear, practical support aligned with your operational needs.",
   },
   {
     title: "Governance, Risk & Compliance",
+    image: grcImage,
+    imageAlt: "Senior advisor assessing enterprise risks and controls",
     description:
       "Strengthen oversight, enterprise risk management, and internal controls with integrated GRC frameworks tailored to your organization.",
   },
@@ -104,8 +124,7 @@ const industries = [
   {
     number: "05",
     title: "Telecommunication",
-    image:
-      "https://images.unsplash.com/photo-1551703599-6b3e8379aa8f?auto=format&fit=crop&w=700&q=85",
+    image: telecommunicationImage,
     size: "compact",
   },
   {
@@ -248,12 +267,21 @@ export default function Servicepage() {
           aria-labelledby="service-hero-title"
           ref={heroRef}
         >
-          <img
+          {/* <img
             className="service-hero__background"
             src={heroBackground}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
+          /> */}
+          <video
+            className="service-hero__background"
+            src={heroBackgroundVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
           />
           <Header />
 
@@ -374,8 +402,10 @@ export default function Servicepage() {
 
                           <figure className="service-accordion__image">
                             <img
-                              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=450&q=80"
-                              alt="Advisory team in a business meeting"
+                              src={service.image}
+                              alt={service.imageAlt}
+                              width="960"
+                              height="640"
                               loading="lazy"
                               decoding="async"
                             />

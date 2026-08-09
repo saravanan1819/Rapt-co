@@ -15,16 +15,6 @@ const InsightCard = memo(function InsightCard({
         className={`trending-card ${className}`.trim()}
         to={`/insights/${article.slug}`}
       >
-        <img
-          className="trending-card__image"
-          src={article.featuredImage}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          width="1200"
-          height="900"
-        />
         <span className="trending-card__number">{number}</span>
         <span className="insights-card-category">{article.category}</span>
         <h3>{article.title}</h3>
@@ -45,25 +35,29 @@ const InsightCard = memo(function InsightCard({
       >
         {layeredArtwork ? (
           <>
-            <img
-              className="insight-card__background-image"
-              src={article.cardBackground}
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              className="insight-card__illustration"
-              src={article.featuredImage}
-              alt={`Illustration for ${article.title}`}
-              loading="lazy"
-              decoding="async"
-              width="1200"
-              height="900"
-            />
+            {article.cardBackground ? (
+              <img
+                className="insight-card__background-image"
+                src={article.cardBackground}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : null}
+            {article.featuredImage ? (
+              <img
+                className="insight-card__illustration"
+                src={article.featuredImage}
+                alt={`Illustration for ${article.title}`}
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="900"
+              />
+            ) : null}
           </>
-        ) : (
+        ) : article.featuredImage ? (
           <img
             src={article.featuredImage}
             alt={`Cover for ${article.title}`}
@@ -72,7 +66,7 @@ const InsightCard = memo(function InsightCard({
             width="1200"
             height="900"
           />
-        )}
+        ) : null}
       </Link>
       <div className="insight-card__content">
         <span className="insights-card-category">{article.category}</span>
