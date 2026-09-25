@@ -10,7 +10,7 @@ import articlesCardBackground from "../../assets/ArticlesCard.png";
 import ctaBackground from "../../assets/CTA_section_bg.png";
 // import heroBackground from "../../assets/Background.gif";
 // import heroBackgroundVideo from "../../assets/animo.webm";
-import heroBackgroundVideo from "../../assets/animo3.mp4";
+import heroBackgroundVideo from "../../assets/animo3.mp4";  
 import earthDay from "../../assets/earth/earth_day_2k.jpg";
 import earthNormal from "../../assets/earth/earth_normal_2k.jpg";
 import earthBump from "../../assets/earth/earth_bump_2k.jpg";
@@ -610,7 +610,7 @@ function Earth() {
   );
 }
 
-function GlobeArtwork() {
+function GlobeArtwork({ active = true }) {
   const controlsRef = useRef(null);
   const resumeRotationTimer = useRef(null);
   const [autoRotate, setAutoRotate] = useState(true);
@@ -635,6 +635,7 @@ function GlobeArtwork() {
   return (
     <Canvas
       className="experience-artwork"
+      frameloop={active ? "always" : "never"}
       camera={{ position: [0, 0, 6.3], fov: 28 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -713,30 +714,33 @@ function GlobeArtwork() {
   );
 }
 
-export default function Homepage() {
+export default function Homepage({ hero = null }) {
   const heroRef = useRef(null);
   const globeHostRef = useRef(null);
   const [shouldRenderGlobe, setShouldRenderGlobe] = useState(false);
+  const [isGlobeVisible, setIsGlobeVisible] = useState(false);
 
+  // Mount the globe when it nears the viewport and pause its render loop when it leaves,
+  // so the WebGL canvas doesn't compete with scrolling elsewhere on the page.
   useEffect(() => {
     const host = globeHostRef.current;
-    if (!host || shouldRenderGlobe) return undefined;
+    if (!host) return undefined;
     if (!("IntersectionObserver" in window)) {
       setShouldRenderGlobe(true);
+      setIsGlobeVisible(true);
       return undefined;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setShouldRenderGlobe(true);
-        observer.disconnect();
+        if (entry.isIntersecting) setShouldRenderGlobe(true);
+        setIsGlobeVisible(entry.isIntersecting);
       },
       { rootMargin: "400px 0px" },
     );
     observer.observe(host);
     return () => observer.disconnect();
-  }, [shouldRenderGlobe]);
+  }, []);
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
@@ -801,6 +805,7 @@ export default function Homepage() {
   return (
     <>
     <main>
+      {hero ?? (
       <section className="homepage-hero" aria-labelledby="homepage-hero-title" ref={heroRef}>
         {/* <img className="homepage-hero__background" src={heroBackground} alt="" aria-hidden="true" fetchPriority="high" /> */}
         <video className="homepage-hero__background" src={heroBackgroundVideo} autoPlay muted loop playsInline aria-hidden="true" />
@@ -821,6 +826,7 @@ export default function Homepage() {
 
         <a className="homepage-hero__scroll" href="#experience-heading">Scroll Down <span aria-hidden="true">↓</span></a>
       </section>
+      )}
       <div className="hr-line"></div>
       <section className="experience" aria-labelledby="experience-heading">
         <div className="experience__container">
@@ -828,7 +834,7 @@ export default function Homepage() {
             <div className="experience__left">
               <h1 id="experience-heading" className="experience__heading">Built on Experience.<br />Trusted by Expertise.</h1>
               <figure className="experience__visual" ref={globeHostRef}>
-                {shouldRenderGlobe ? <GlobeArtwork /> : null}
+                {shouldRenderGlobe ? <GlobeArtwork active={isGlobeVisible} /> : null}
               </figure>
             </div>
 

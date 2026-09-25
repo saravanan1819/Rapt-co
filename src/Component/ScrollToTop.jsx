@@ -10,7 +10,7 @@ export default function ScrollToTop() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: "instant", // overrides CSS smooth scroll: new routes open at the top immediately
     });
   }, [pathname, hash]);
 

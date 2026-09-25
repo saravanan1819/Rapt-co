@@ -4,12 +4,17 @@ import { RiArrowLeftLongLine } from "react-icons/ri";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
+import NewHeroSection from "../../Component/NewHeroSection/NewHeroSection";
+import contactBg from "../../assets/Herosection/Contact-bg.jpg";
 import Footer from "../../Component/Footer/Footer";
 import { FrequentlyAskedQuestions } from "../Homepage/Homepage";
 // import heroBackground from "../../assets/Background.gif";
 // import heroBackgroundVideo from "../../assets/animo.webm";
 import heroBackgroundVideo from "../../assets/animo3.mp4";
 import "./Contactpage.css";
+
+// Set to false to restore the previous hero and header.
+const USE_NEW_HERO = true;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,7 +109,26 @@ export default function Contactpage() {
   return (
     <>
       <main>
-        <section
+        {USE_NEW_HERO ? (
+          <NewHeroSection
+            id="contact-hero-title"
+            title="Let's Start a Conversation."
+            description="Whether you're navigating regulatory change, planning for compliance, or seeking strategic advisory, our team is here to help. Tell us about your requirements, and we'll connect you with the right experts."
+            primaryAction={{
+              label: "Book a Consultation",
+              to: "/contact#get-in-touch",
+            }}
+            secondaryAction={{
+              label: "Download Company Profile",
+              href: "/company-profile.pdf",
+              download: true,
+            }}
+            backgroundImage={contactBg}
+            scrollTo="#faq-heading"
+          />
+        ) : (
+          /* Existing hero retained for rollback */
+          <section
           className="contact-hero"
           aria-labelledby="contact-hero-title"
           ref={heroRef}
@@ -155,6 +179,7 @@ export default function Contactpage() {
             Scroll Down <span aria-hidden="true">↓</span>
           </a>
         </section>
+        )}
 
         <section
           id="get-in-touch"

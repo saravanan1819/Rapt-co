@@ -1,0 +1,4 @@
+/* The old hero carried a 60px bottom margin; keep the same rhythm below the new hero. */
+.new-hero + .hr-line {
+  margin-top: 60px;
+}

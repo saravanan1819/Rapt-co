@@ -131,3 +131,7 @@ button, a, input, select, textarea {
   -webkit-text-fill-color: transparent; */
   text-shadow: 0 2px 8px rgb(255 255 255 / 50%);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

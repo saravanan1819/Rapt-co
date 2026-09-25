@@ -11,6 +11,8 @@ import { LuClock3, LuSparkles } from "react-icons/lu";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
+import NewHeroSection from "../../Component/NewHeroSection/NewHeroSection";
+import insightsBg from "../../assets/Herosection/Insights-bg.jpg";
 import Footer from "../../Component/Footer/Footer";
 import InsightCard from "../../Components/InsightCard";
 import { insights } from "../../Data/insights";
@@ -24,6 +26,9 @@ import resourcesImage from "../../assets/insights/resources.png";
 import trendingInsightsImage from "../../assets/insights/trending-insights.png";
 import "./Insightspage.css";
 import { CallToAction } from "../Homepage/Homepage";
+
+// Set to false to restore the previous hero and header.
+const USE_NEW_HERO = true;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,7 +157,22 @@ export default function Insightspage() {
   return (
     <div className="insights-page" ref={pageRef}>
       <main>
-        <section
+        {USE_NEW_HERO ? (
+          <NewHeroSection
+            id="insights-page-title"
+            title="Insights & Perspectives"
+            description="Explore industry trends, strategic thinking, technology innovations, design inspiration, and practical knowledge that help businesses grow confidently in the digital era."
+            primaryAction={{ label: "Explore Articles", href: "#latest-insights" }}
+            secondaryAction={{
+              label: "Book a Consultation",
+              to: "/contact#get-in-touch",
+            }}
+            backgroundImage={insightsBg}
+            scrollTo="#featured-insight"
+          />
+        ) : (
+          /* Existing hero retained for rollback */
+          <section
           className="insights-hero"
           aria-labelledby="insights-page-title"
           ref={heroRef}
@@ -203,6 +223,7 @@ export default function Insightspage() {
             Scroll Down <span aria-hidden="true">↓</span>
           </a>
         </section>
+        )}
 
         <section
           className="featured-insight insights-page__section insights-page__reveal"

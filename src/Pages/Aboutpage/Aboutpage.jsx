@@ -2,6 +2,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../Component/Header/Header";
+import NewHeroSection from "../../Component/NewHeroSection/NewHeroSection";
+import aboutBg from "../../assets/Herosection/About-bg.jpg";
 import Footer from "../../Component/Footer/Footer";
 import {
   CallToAction,
@@ -13,6 +15,9 @@ import {
 import aboutBackgroundVideo from "../../assets/animo3.mp4";
 import purposeBackground from "../../assets/Client_bg.png";
 import "./Aboutpage.css";
+
+// Set to false to restore the previous hero and header.
+const USE_NEW_HERO = true;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -248,9 +253,20 @@ export default function Aboutpage() {
 
   return (
     <>
-      <Header />
+      {!USE_NEW_HERO && <Header />}
       <main className="about-page">
-        <section
+        {USE_NEW_HERO ? (
+          <NewHeroSection
+            id="about-hero-title"
+            title="Welcome to RAPT & Co."
+            subtitle="Building Confidence Through Intelligent Advisory."
+            description="Technology-driven advisory helping organizations navigate governance, taxation, privacy, risk, and regulatory compliance through trusted expertise, integrated solutions, and long-term strategic partnerships."
+            backgroundImage={aboutBg}
+            scrollTo="#who-we-are-title"
+          />
+        ) : (
+          /* Existing hero retained for rollback */
+          <section
           className="about-hero"
           aria-labelledby="about-hero-title"
           ref={heroRef}
@@ -293,6 +309,7 @@ export default function Aboutpage() {
             Scroll Down ↓
           </span>
         </section>
+        )}
 
         <section
           className="who-we-are"
